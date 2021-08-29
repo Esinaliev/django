@@ -1,0 +1,33 @@
+{% load static %}
+    <div class="featured-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>
+                  {% if category.name == None %}
+                  Выберите категорию
+                  {% else %}
+                  {{ category.name|title }}
+                  {% endif %}
+              </h1>
+            </div>
+          </div>
+          <div class="col-md-8 col-sm-12">
+            <div id="filters" class="button-group">
+                <button class="btn btn-primary">
+                    <a href="{% url 'products:category' 0 %}">Все</a>
+                </button>
+
+
+                {% for category in links_menu %}
+                <button class="btn btn-primary">
+                    <a href="{% url 'products:category'  category.pk %}">{{ category.name }}</a>
+                </button>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

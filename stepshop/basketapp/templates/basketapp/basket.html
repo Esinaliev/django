@@ -1,0 +1,37 @@
+{% extends 'stepshop/base.html' %}
+{% load static %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container" style="margin-top:50px;">
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Продукт</th>
+          <th scope="col">Количество</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for item in basket %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ item.product }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>
+             <div class="main-button">
+              <a href="{% url 'basket:remove' item.product.pk %}">Удалить</a>
+              </div>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

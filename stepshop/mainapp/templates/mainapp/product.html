@@ -1,0 +1,79 @@
+{% extends 'stepshop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Page Content -->
+    <!-- Single Starts Here -->
+    <div class="single-product">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>Продукт</h1>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="product-slider">
+              <div id="slider" class="flexslider">
+                  <img src="{% if current_product.image == '' %}{% static 'stepshop/images/not_found.png' %}
+                  {% else %}/media/{{ current_product.image }}{% endif %}" alt="{{ current_product.short_desc }}">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-content">
+              <h4>{{ current_product.name }}</h4>
+              <h6>${{ current_product.price }}</h6>
+              <p>{{ current_product.description }}</p>
+              <span>{{ current_product.quantity }}</span>
+             <div class="main-button">
+              <a href="{% url 'basket:add' current_product.pk %}">Заказать</a>
+              </div>
+
+              <div class="down-content">
+                <div class="categories">
+                  <h6>Категории: <span><a href="{% url 'products:category' current_product.category.pk %}">{{ current_product.category }}</a></span></h6>
+                </div>
+                <div class="share">
+                  <h6>Share: <span><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></span></h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Single Page Ends Here -->
+
+
+    <!-- Similar Starts Here -->
+    <div class="featured-items">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>You May Also Like</h1>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="owl-carousel owl-theme">
+            {% for product in products_all %}
+              <a href="{% url 'products:product' product.pk %}">
+                <div class="featured-item">
+                  <img src="/media/{% if product.image == '' %}system/not_found.png
+                  {% else %}{{ product.image }}{% endif %}" alt="{{ product.short_desc }}">
+                  <h4>{{ product.name }}</h4>
+                  <h6>${{ product.price }}</h6>
+                </div>
+              </a>
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Similar Ends Here -->
+{% endblock %}

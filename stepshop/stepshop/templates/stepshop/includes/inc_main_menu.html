@@ -1,0 +1,56 @@
+{% load static %}
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'stepshop/images/header-logo.png' %}" alt=""></a>
+
+
+
+        {% now "h:i D-M-Y" %}
+        <img style=" height: 50px; width: 50px;" src="/media/{% if user.avatar == None or user.avatar == '' %}system/not_found.png
+                  {% else %}{{ user.avatar }}{% endif %}" alt="">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item
+                {% if request.resolver_match.route == '' %}active{% endif %}
+                    ">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item
+                {% if request.resolver_match.route == 'products/' %}active{% endif %}
+                    ">
+                    <a class="nav-link" href="{% url 'products:index' %}">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">About&nbspUs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contacts' %}">Contact&nbspUs</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'auth:edit' %}">
+                        {{ user.first_name|default:user.username }}
+                    </a>
+                </li>
+
+                {% endif %}
+
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'auth:logout' %}">Выйти</a>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'auth:login' %}">Войти</a>
+                    {% endif %}
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

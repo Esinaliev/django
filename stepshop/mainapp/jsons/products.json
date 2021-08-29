@@ -1,0 +1,56 @@
+[
+  {
+    "category": "Бобер",
+    "name": "Бобер классический",
+    "image": "product_images/бобер.jpg",
+    "short_desc": "Шерстка глаткая",
+    "description": "строит плотины",
+    "price": "10000.00",
+    "quantity": 4
+  },
+  {
+    "category": "Игры",
+    "name": "minecraft",
+    "image": "product_images/mine.jpg",
+    "short_desc": "лучшая игра",
+    "description": "",
+    "price": "15000.00",
+    "quantity": 1500
+  },
+  {
+    "category": "Куртки",
+    "name": "Куртка зимняя",
+    "image": "",
+    "short_desc": "очень теплая",
+    "description": "",
+    "price": "14999.99",
+    "quantity": 228
+  },
+  {
+    "category": "Носки",
+    "name": "Носок с принтом",
+    "image": "",
+    "short_desc": "носок с принтом майнкрафта",
+    "description": "",
+    "price": "15000.00",
+    "quantity": 1785
+  },
+  {
+    "category": "Приложения",
+    "name": "photoshop",
+    "image": "photoshop_uSgUsF6.jpg",
+    "short_desc": "хейтеры скажут photoshop",
+    "description": "хейтеры скажут photoshop",
+    "price": "15000.00",
+    "quantity": 1785
+  },
+  {
+    "category": "Шнурки",
+    "name": "Шнурки классические",
+    "image": "",
+    "short_desc": "Шнурки обычные",
+    "description": "Учите детей завязывать шнурки",
+    "price": "20.00",
+    "quantity": 25
+  }
+]

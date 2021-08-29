@@ -1,0 +1,45 @@
+{% extends 'stepshop/base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'mainapp/includes/inc_category_menu.html' %}
+
+    <!-- Page Content -->
+    <!-- Items Starts Here -->
+
+    <div class="featured container no-gutter">
+
+        <div class="row posts">
+            {% for product in products_all %}
+            <div id="{{ product.pk }}" class="item new col-md-4">
+              <a href="{% url 'products:product' product.pk %}">
+                <div class="featured-item">
+                  <img src="{% if product.image == '' %}{% static 'stepshop/images/not_found.png' %}
+                  {% else %}/media/{{ product.image }}{% endif %}" alt="{{ product.short_desc }}">
+                  <h4>{{ product.name }}</h4>
+                  <h6>${{ product.price }}</h6>
+                </div>
+              </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="page-navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li class="current-page"><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Featred Page Ends Here -->
+
+
+{% endblock %}
